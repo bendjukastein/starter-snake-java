@@ -24,6 +24,9 @@ public class Snake {
     private static final Handler HANDLER = new Handler();
     private static final Logger LOG = LoggerFactory.getLogger(Snake.class);
 
+    public static boolean issnakebody (int x, int y){
+
+            }
     /**
      * Main entry point.
      *
@@ -120,25 +123,56 @@ public class Snake {
         public Map<String, String> move(JsonNode moveRequest) {//store as battledata for start and move.
             Map<String, String> response = new HashMap<>();
 
+            final int FREE = 0;
+            final int SNAKE = 1;
+            final int FOOD = 2;
+
+
             int food_x = moveRequest.get("board").get("food").elements().next().get("x").asInt(); //gets x cord of first food
             int food_y = moveRequest.get("board").get("food").elements().next().get("y").asInt(); //gets y cord of first food
 
             int head_x = moveRequest.get("you").get("body").elements().next().get("x").asInt(); //get x cord of snake head
             int head_y = moveRequest.get("you").get("body").elements().next().get("y").asInt(); //get y cord of snake head
-            
-            if (head_x < food_x){
+
+            int width = moveRequest.get("board").get("width").asInt(); //gets width of board
+            int height = moveRequest.get("board").get("height").asInt(); //gets width of board
+
+            int board[][] = new int board[height][width];
+
+            JsonNode snakebody = moveRequest.get("you").get("body").elements();
+
+            // Board values; 0 means empty, 1 means DEATH, 2 means FOOD
+            for(JsonNode snake : moveRequest.get("board").get("snakes"))
+            {
+                for (JsonNode snakeBody : snake.get("body"))
+                {
+                    board[snakeBody.get("y").asInt()][snakeBody.get("x").asInt()] = SNAKE;
+                }
+                int snakeX = snake.get("body").elements().next().get("x").asInt();
+                int snakeY = snake.get("body").elements().next().get("y").asInt();
+                board[snakeX][snakeY] = SNAKE;
+            }
+
+            for (JsonNode food : moveRequest.get("board").get("food"))
+            {
+                board[food.get("x").asInt()][food.get("y").asInt()] = FOOD;
+            }
+
+
+
+            if (head_x < width-1 && head_x < food_x && board[head_x+1][head_y] != SNAKE){
                 response.put("move", "right");
                 return response;
             }
-            else if (head_y < food_y){
+            else if (head_y < height-1 && head_y < food_y&& board[head_x][head_y+1] != SNAKE){
                 response.put("move", "down");
                 return response;
             }
-            else if (head_y > food_y){
+            else if (head_y > 0 && head_y > food_y&& board[head_x][head_y-1] != SNAKE){
                 response.put("move", "up");
                 return response;
             }
-            else if (head_x > food_x){
+            else if (head_x > 0 && head_x > food_x&& board[head_x-1][head_y] != SNAKE){
                 response.put("move", "left");
                 return response;
             }
