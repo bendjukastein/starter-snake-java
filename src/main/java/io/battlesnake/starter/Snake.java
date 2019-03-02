@@ -117,9 +117,35 @@ public class Snake {
          * @param moveRequest a map containing the JSON sent to this snake. See the spec for details of what this contains.
          * @return a response back to the engine containing snake movement values.
          */
-        public Map<String, String> move(JsonNode moveRequest) {
+        public Map<String, String> move(JsonNode moveRequest) {//store as battledata for start and move.
             Map<String, String> response = new HashMap<>();
-            response.put("move", "right");
+
+            int food_x = moveRequest.get("board").get("food").elements().next().get("x").asInt(); //gets x cord of first food
+            int food_y = moveRequest.get("board").get("food").elements().next().get("y").asInt(); //gets y cord of first food
+
+            int head_x = moveRequest.get("you").get("body").elements().next().get("x").asInt(); //get x cord of snake head
+            int head_y = moveRequest.get("you").get("body").elements().next().get("y").asInt(); //get y cord of snake head
+            
+            if (head_x < food_x){
+                response.put("move", "right");
+                return response;
+            }
+            else if (head_y < food_y){
+                response.put("move", "up");
+                return response;
+            }
+            else if (head_y > food_y){
+                response.put("move", "down");
+                return response;
+            }
+            else if (head_x > food_x){
+                response.put("move", "left");
+                return response;
+            }
+            /*
+            Response Output Options:  up down left right
+            */
+            else response.put("move", "right");
             return response;
         }
 
