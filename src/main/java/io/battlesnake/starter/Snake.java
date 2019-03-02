@@ -139,8 +139,6 @@ public class Snake {
 
             int[][] board = new int[height][width];
 
-            JsonNode snakebody = moveRequest.get("you").get("body").elements();
-
             // Board values; 0 means empty, 1 means DEATH, 2 means FOOD
             for(JsonNode snake : moveRequest.get("board").get("snakes"))
             {
