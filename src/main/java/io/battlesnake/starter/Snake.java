@@ -128,8 +128,8 @@ public class Snake {
 
 
 
-            int food_x = moveRequest.get("board").get("food").elements().next().get("x").asInt(); //gets x cord of first food
-            int food_y = moveRequest.get("board").get("food").elements().next().get("y").asInt(); //gets y cord of first food
+            int food_x = moveRequest.get("board").get("food").elements().next().get("x").asInt(-1); //gets x cord of first food
+            int food_y = moveRequest.get("board").get("food").elements().next().get("y").asInt(-1); //gets y cord of first food
 
             int head_x = moveRequest.get("you").get("body").elements().next().get("x").asInt(); //get x cord of snake head
             int head_y = moveRequest.get("you").get("body").elements().next().get("y").asInt(); //get y cord of snake head
