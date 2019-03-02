@@ -137,7 +137,7 @@ public class Snake {
             int width = moveRequest.get("board").get("width").asInt(); //gets width of board
             int height = moveRequest.get("board").get("height").asInt(); //gets width of board
 
-            int board[][] = new int board[height][width];
+            int[][] board = new int board[height][width];
 
             JsonNode snakebody = moveRequest.get("you").get("body").elements();
 
