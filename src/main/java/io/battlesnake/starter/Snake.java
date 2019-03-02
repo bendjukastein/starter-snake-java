@@ -121,7 +121,7 @@ public class Snake {
             Map<String, String> response = new HashMap<>();
 
             final int FREE = 0;
-            final int SNAKEBODY = 1;
+            final int SNAKE = 1;
             final int HEAD = 2;
             final int FOOD = 3;
 
@@ -194,7 +194,7 @@ public class Snake {
             return response;
             }
 
-            
+
             else response.put("move", "left");
             return response;
         }
