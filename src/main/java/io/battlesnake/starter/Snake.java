@@ -121,8 +121,11 @@ public class Snake {
             Map<String, String> response = new HashMap<>();
 
             final int FREE = 0;
-            final int SNAKE = 1;
-            final int FOOD = 2;
+            final int SNAKEBODY = 1;
+            final int HEAD = 2;
+            final int FOOD = 3;
+
+
 
 
             int food_x = moveRequest.get("board").get("food").elements().next().get("x").asInt(); //gets x cord of first food
@@ -174,7 +177,25 @@ public class Snake {
             /*
             Response Output Options:  up down left right
             */
-            else response.put("move", "right");
+            else if (board[head_x+1][head_y] != SNAKE){
+            response.put("move", "right");
+            return response;
+            }
+            else if (board[head_x][head_y+1] != SNAKE){
+            response.put("move", "down");
+            return response;
+            }
+            else if (board[head_x][head_y-1] != SNAKE){
+            response.put("move", "up");
+            return response;
+            }
+            else if (board[head_x-1][head_y] != SNAKE){
+            response.put("move", "left");
+            return response;
+            }
+
+            
+            else response.put("move", "left");
             return response;
         }
 
