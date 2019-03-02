@@ -177,19 +177,19 @@ public class Snake {
             /*
             Response Output Options:  up down left right
             */
-            else if (board[head_x+1][head_y] != SNAKE){
+            else if (head_x < width-1 && board[head_x+1][head_y] != SNAKE){
             response.put("move", "right");
             return response;
             }
-            else if (board[head_x][head_y+1] != SNAKE){
+            else if (head_y < height-1 && board[head_x][head_y+1] != SNAKE){
             response.put("move", "down");
             return response;
             }
-            else if (board[head_x][head_y-1] != SNAKE){
+            else if (head_y > 0 &&board[head_x][head_y-1] != SNAKE){
             response.put("move", "up");
             return response;
             }
-            else if (board[head_x-1][head_y] != SNAKE){
+            else if (head_x > 0 &&board[head_x-1][head_y] != SNAKE){
             response.put("move", "left");
             return response;
             }
