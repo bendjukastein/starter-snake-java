@@ -140,6 +140,8 @@ public class Snake {
             int[][] board = new int[height][width];
 
             // Board values; 0 means empty, 1 means DEATH, 2 means FOOD
+
+
             for(JsonNode snake : moveRequest.get("board").get("snakes"))
             {
                 for (JsonNode snakeBody : snake.get("body"))
@@ -151,13 +153,15 @@ public class Snake {
                 board[snakeX][snakeY] = SNAKE;
             }
 
+
+
             for (JsonNode food : moveRequest.get("board").get("food"))
             {
                 board[food.get("x").asInt()][food.get("y").asInt()] = FOOD;
             }
 
 
-if(food_x != 0 && food_y != 0  ){
+if(food_x != null && food_y != null  ){
     if (head_x < width-1 && head_x < food_x && board[head_x+1][head_y] != SNAKE){
                 response.put("move", "right");
                 return response;
