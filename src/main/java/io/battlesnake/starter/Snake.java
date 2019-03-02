@@ -131,11 +131,11 @@ public class Snake {
                 return response;
             }
             else if (head_y < food_y){
-                response.put("move", "up");
+                response.put("move", "down");
                 return response;
             }
             else if (head_y > food_y){
-                response.put("move", "down");
+                response.put("move", "up");
                 return response;
             }
             else if (head_x > food_x){
