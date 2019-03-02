@@ -24,9 +24,6 @@ public class Snake {
     private static final Handler HANDLER = new Handler();
     private static final Logger LOG = LoggerFactory.getLogger(Snake.class);
 
-    public static boolean issnakebody (int x, int y){
-
-            }
     /**
      * Main entry point.
      *
