@@ -134,8 +134,8 @@ public class Snake {
             int head_x = moveRequest.get("you").get("body").elements().next().get("x").asInt(); //get x cord of snake head
             int head_y = moveRequest.get("you").get("body").elements().next().get("y").asInt(); //get y cord of snake head
 
-            int width = moveRequest.get("board").get("width").asInt(); //gets width of board
-            int height = moveRequest.get("board").get("height").asInt(); //gets width of board
+            final int width = moveRequest.get("board").get("width").asInt(); //gets width of board
+            final int height = moveRequest.get("board").get("height").asInt(); //gets width of board
 
             int[][] board = new int[height][width];
 
@@ -162,16 +162,16 @@ public class Snake {
 
 
 if(food_x != -1 && food_y != -1  ){
-    if (head_x < width-1 && head_x < food_x && board[head_x+1][head_y] != SNAKE){
+            if (head_x < width-1 && head_x < food_x && board[head_x+1][head_y] != SNAKE){
                 response.put("move", "right");
                 return response;
             }
             else if (head_y < height-1 && head_y < food_y&& board[head_x][head_y+1] != SNAKE){
-                response.put("move", "down");
+                response.put("move", "up");
                 return response;
             }
             else if (head_y > 0 && head_y > food_y&& board[head_x][head_y-1] != SNAKE){
-                response.put("move", "up");
+                response.put("move", "down");
                 return response;
             }
             else if (head_x > 0 && head_x > food_x&& board[head_x-1][head_y] != SNAKE){
