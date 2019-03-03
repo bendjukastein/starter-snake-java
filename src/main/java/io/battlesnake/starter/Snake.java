@@ -107,7 +107,6 @@ public class Snake {
         public Map<String, String> start(JsonNode startRequest) {
             Map<String, String> response = new HashMap<>();
             response.put("color", "#000000");
-            int alternator = 0;
             return response;
         }
 
@@ -124,6 +123,7 @@ public class Snake {
             final int SNAKE = 1;
             final int HEAD = 2;
             final int FOOD = 3;
+            int alternator = head_y;
 
 // IMPROVEMENTS: FOLLOW OWN TAIL, define what your own tail is. 
             //FIGURE OUT HOW TO STORE VARIABLES BETWEEN TRIALS (to alternate things etc)
