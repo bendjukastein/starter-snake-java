@@ -123,7 +123,7 @@ public class Snake {
             final int SNAKE = 1;
             final int HEAD = 2;
             final int FOOD = 3;
-            int alternator = head_y;
+
 
 // IMPROVEMENTS: FOLLOW OWN TAIL, define what your own tail is. 
             //FIGURE OUT HOW TO STORE VARIABLES BETWEEN TRIALS (to alternate things etc)
@@ -139,6 +139,7 @@ public class Snake {
             final int height = moveRequest.get("board").get("height").asInt(); //gets width of board
 
             int[][] board = new int[height][width];
+            int alternator = height - head_y;
 
             // Board values; 0 means empty, 1 means DEATH, 2 means FOOD
 
