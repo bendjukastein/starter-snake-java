@@ -195,7 +195,7 @@ public class Snake {
             }
             if (alternator < height-1 && alternator != 0){
                 response.put("move", "up");
-                alternator++
+                alternator++;
                 return response;
             }
             if (alternator >= 20){
