@@ -23,7 +23,7 @@ public class Snake {
     private static final ObjectMapper JSON_MAPPER = new ObjectMapper();
     private static final Handler HANDLER = new Handler();
     private static final Logger LOG = LoggerFactory.getLogger(Snake.class);
-
+    int alternator = 0;
     /**
      * Main entry point.
      *
@@ -126,6 +126,7 @@ public class Snake {
             final int FOOD = 3;
 
 // IMPROVEMENTS: FOLLOW OWN TAIL, define what your own tail is. 
+            //FIGURE OUT HOW TO STORE VARIABLES BETWEEN TRIALS (to alternate things etc)
 
 
             int food_x = moveRequest.get("board").get("food").elements().next().get("x").asInt(-1); //gets x cord of first food
@@ -192,11 +193,20 @@ public class Snake {
             response.put("move", "left");
             return response;
             }
+            if (alternator < height-1 && alternator != 0){
+                response.put("move", "up");
+                alternator++
+                return response;
+            }
+            if (alternator >= 20){
+                alternator = 0;
+            }
             else if (head_y < height-1 && board[head_x][head_y+1] != SNAKE){
             response.put("move", "down");
             return response;
             }
             else if (head_y > 0 &&board[head_x][head_y-1] != SNAKE){
+            alternator = 1;
             response.put("move", "up");
             return response;
             }
