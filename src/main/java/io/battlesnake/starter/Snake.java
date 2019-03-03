@@ -142,7 +142,7 @@ public class Snake {
             // Board values; 0 means empty, 1 means DEATH, 2 means FOOD
 
 
-            for(JsonNode snake : moveRequest.get("board").get("snakes"))
+            for(JsonNode snakeBody : moveRequest.get("board").get("snakes"))
             {
                 for (JsonNode snakeBody : snake.get("body"))
                 {
@@ -161,7 +161,7 @@ public class Snake {
             }
 
 
-if(food_x != -1 && food_y != -1  ){
+if(food_x != -1 || food_y != -1  ){
             if (head_x < width-1 && head_x < food_x && board[head_x+1][head_y] != SNAKE){
                 response.put("move", "right");
                 return response;
