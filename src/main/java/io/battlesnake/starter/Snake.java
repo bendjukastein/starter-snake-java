@@ -162,11 +162,11 @@ public class Snake {
             }
 
 
-/*if(food_x != -1 || food_y != -1  ){
+if(food_x != -1 || food_y != -1  ){
             if (head_x < width-1 && head_x < food_x && board[head_x+1][head_y] != SNAKE){
                 response.put("move", "right");
                 return response;
-            }
+            }/*
             else if (head_y > 0 && head_y > food_y&& board[head_x][head_y-1] != SNAKE){
                 response.put("move", "up");
                 return response;
