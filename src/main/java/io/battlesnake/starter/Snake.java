@@ -125,7 +125,7 @@ public class Snake {
             final int HEAD = 2;
             final int FOOD = 3;
 
-
+// IMPROVEMENTS: FOLLOW OWN TAIL, define what your own tail is. 
 
 
             int food_x = moveRequest.get("board").get("food").elements().next().get("x").asInt(-1); //gets x cord of first food
@@ -167,16 +167,16 @@ if(food_x != -1 || food_y != -1  ){
                 response.put("move", "right");
                 return response;
             }
-            else if (head_y < height-1 && head_y < food_y&& board[head_x][head_y+1] != SNAKE){
-                response.put("move", "down");
-                return response;
-            }
             else if (head_y > 0 && head_y > food_y&& board[head_x][head_y-1] != SNAKE){
                 response.put("move", "up");
                 return response;
             }
             else if (head_x > 0 && head_x > food_x&& board[head_x-1][head_y] != SNAKE){
                 response.put("move", "left");
+                return response;
+            }
+            else if (head_y < height-1 && head_y < food_y&& board[head_x][head_y+1] != SNAKE){
+                response.put("move", "down");
                 return response;
             }
 }
