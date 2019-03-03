@@ -179,7 +179,7 @@ if(food_x != -1 || food_y != -1  ){
                 response.put("move", "down");
                 return response;
             }
-}*/
+*/}
             
             /*
             Response Output Options:  up down left right
