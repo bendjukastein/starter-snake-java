@@ -142,14 +142,15 @@ public class Snake {
             // Board values; 0 means empty, 1 means DEATH, 2 means FOOD
 
 
-            for(JsonNode snakeBody : moveRequest.get("board").get("snakes"))
+            for(JsonNode snake : moveRequest.get("board").get("snakes"))
             {
+                int snakeX = snake.get("body").elements().next().get("x").asInt();
+                int snakeY = snake.get("body").elements().next().get("y").asInt();
                 for (JsonNode snakeBody : snake.get("body"))
                 {
                     board[snakeBody.get("x").asInt()][snakeBody.get("y").asInt()] = SNAKE;
                 }
-                int snakeX = snake.get("body").elements().next().get("x").asInt();
-                int snakeY = snake.get("body").elements().next().get("y").asInt();
+                
                 board[snakeX][snakeY] = SNAKE;
             }
 
