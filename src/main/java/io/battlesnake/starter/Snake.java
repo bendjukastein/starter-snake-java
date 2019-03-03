@@ -167,11 +167,11 @@ if(food_x != -1 && food_y != -1  ){
                 return response;
             }
             else if (head_y < height-1 && head_y < food_y&& board[head_x][head_y+1] != SNAKE){
-                response.put("move", "up");
+                response.put("move", "down");
                 return response;
             }
             else if (head_y > 0 && head_y > food_y&& board[head_x][head_y-1] != SNAKE){
-                response.put("move", "down");
+                response.put("move", "up");
                 return response;
             }
             else if (head_x > 0 && head_x > food_x&& board[head_x-1][head_y] != SNAKE){
@@ -187,6 +187,10 @@ if(food_x != -1 && food_y != -1  ){
             response.put("move", "right");
             return response;
             }
+            else if (head_x > 0 &&board[head_x-1][head_y] != SNAKE){
+            response.put("move", "left");
+            return response;
+            }
             else if (head_y < height-1 && board[head_x][head_y+1] != SNAKE){
             response.put("move", "down");
             return response;
@@ -195,10 +199,7 @@ if(food_x != -1 && food_y != -1  ){
             response.put("move", "up");
             return response;
             }
-            else if (head_x > 0 &&board[head_x-1][head_y] != SNAKE){
-            response.put("move", "left");
-            return response;
-            }
+            
 
 
             else response.put("move", "left");
