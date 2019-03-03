@@ -54,6 +54,7 @@ public class Snake {
          * For the ping request
          */
         private static final Map<String, String> EMPTY = new HashMap<>();
+        public int alternator = 0;
 
         /**
          * Generic processor that prints out the request and response from the methods.
@@ -139,7 +140,7 @@ public class Snake {
             final int height = moveRequest.get("board").get("height").asInt(); //gets width of board
 
             int[][] board = new int[height][width];
-            int alternator = height - head_y;
+
 
             // Board values; 0 means empty, 1 means DEATH, 2 means FOOD
 
