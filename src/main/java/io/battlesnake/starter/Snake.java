@@ -184,7 +184,7 @@ public class Snake {
             /*
             Response Output Options:  up down left right
             */
-            else */if (head_x < width-1 && board[head_x+1][head_y] != SNAKE){
+            if (head_x < width-1 && board[head_x+1][head_y] != SNAKE){
             response.put("move", "right");
             return response;
             }
