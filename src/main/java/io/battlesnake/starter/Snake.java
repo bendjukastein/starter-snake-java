@@ -23,7 +23,6 @@ public class Snake {
     private static final ObjectMapper JSON_MAPPER = new ObjectMapper();
     private static final Handler HANDLER = new Handler();
     private static final Logger LOG = LoggerFactory.getLogger(Snake.class);
-    int alternator = 0;
     /**
      * Main entry point.
      *
@@ -108,6 +107,7 @@ public class Snake {
         public Map<String, String> start(JsonNode startRequest) {
             Map<String, String> response = new HashMap<>();
             response.put("color", "#000000");
+            int alternator = 0;
             return response;
         }
 
